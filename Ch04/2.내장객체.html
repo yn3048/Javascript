@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,30 +11,31 @@
         내용 : 자바스크립트 내장객체 실습하기
      -->
 </head>
-<body>
-    <h3>2.내장객체</h3>
 
-    <h4>Array</h4>
+<body>
+    <h3>✨2.내장객체</h3>
+
+    <h4>🚨Array</h4>
     <script>
-        const arr1 = [1,2,3,4,5];
-        const arr2 = new Array(6,7,8,9,10);
+        const arr1 = [1, 2, 3, 4, 5];
+        const arr2 = new Array(6, 7, 8, 9, 10);
 
         // 배열반복문
-        arr1.forEach(function(item, index){
+        arr1.forEach(function (item, index) {
             document.write('index : ' + index + ', item : ' + item + '<br>');
         });
 
-        arr2.forEach((item, index)=>{
+        arr2.forEach((item, index) => {
             document.write('index : ' + index + ', item : ' + item + '<br>');
         });
 
         // 배열 원소 가공처리
-        const arr3 = arr1.map((item)=>{
-                                return item + 10;
-                            });
+        const arr3 = arr1.map((item) => {
+            return item + 10;
+        });
 
         document.write('arr3 : ' + arr3 + '<br>');
-                            
+
         const arr4 = arr1.map(item => item * 2);
         document.write('arr4 : ' + arr4 + '<br>');
 
@@ -45,7 +47,7 @@
 
     </script>
 
-    <h4>String</h4>
+    <h4>🚨String</h4>
     <script>
         const str1 = 'Hello Korea';
         const str2 = new String('Hello Korea');
@@ -72,8 +74,100 @@
         document.write('r9 : ' + r9 + '<br>');
 
     </script>
-    
-    <h4>Math</h4>
+
+    <h4>🚨정규표현식</h4>
+    <script>
+        // 정규표현식
+        const regexp = new RegExp(/\d{3}/); // 숫자가 3번 반복
+        let t1 = regexp.test('hello');  //문자 false
+        let t2 = regexp.test('12');  //숫자 2개라서 false
+        let t3 = regexp.test('123'); // true
+        let t4 = regexp.test('1234'); // 숫자3개 반복이라서 true
+
+        document.write('t1 : ' + t1 + '<br>');
+        document.write('t2 : ' + t2 + '<br>');
+        document.write('t3 : ' + t3 + '<br>');
+        document.write('t4 : ' + t4 + '<br>');
+
+
+        const hp = '010-1234-1001';
+        const matched = hp.match(/\d{4}/);
+        //const matchedAll = hp.matchAll(/\d{4}/);
+
+        document.write('matched : ' + matched + '<br>');
+
+        // 정규표현식 플래그
+        /* 
+            i : 대소문자 무시
+            g : 전체(global)
+        */
+        const testStr1 = 'Hello World hello javascript hello regex';
+
+        const re1 = /hello/;
+        const re2 = /hello/i;       //슬래쉬 끝에 붙이는 것을 플래그라고 함
+        const re3 = /hello/g;
+        const re4 = /hello/ig;
+
+        document.write('rel result : ' + testStr1.match(re1) + '<br>');
+        document.write('rel result : ' + testStr1.match(re2) + '<br>');
+        document.write('rel result : ' + testStr1.match(re3) + '<br>');
+        document.write('rel result : ' + testStr1.match(re4) + '<br>');
+
+        // 정규표현식 메타문자
+        /* 
+         ^ : 정규표현식 문자열 시작
+         $ : 정규표현식 문자열 끝
+         { : 정규표현식 문자열 반복 시작
+         } : 정규표현식 문자열 반복 끝
+         | : 정규표현식 OR
+         [ : 사용자 정의 정규표현식 시작
+         ] : 사용자 정의 정규표현식 끝
+         - : 정규표현식 문자열 범위
+         . : 문자 하나
+         + : 문자가 1번 이상 반복되는 문자열
+         ? : 문자가 0번 또는 1번인 문자열
+         * : 문자가 0번 이상 반복되는 문자열
+        */
+
+        const reg1 = /^[0-9]+$/;        // 숫자
+        const reg2 = /^[1-9]\d*/;       // 숫자(양수)
+        const reg3 = /^\-[1-9]\d*/;     // 숫자(음수)
+        const reg4 = /^[a-zA-Z]+$/;     // 영문자
+        const reg5 = /^[a-zA-Z0-9]+$/   // 숫자와 영문자
+        const reg6 = /^[가-힣]+$/;      //  한글문자
+        const reg7 = /^.[5,10]+$/;      // 문자열 길이가 5~10
+
+        document.write('reg1 test : ' + reg1.test('apple') + '<br>');
+        document.write('reg1 test : ' + reg1.test('123') + '<br>');
+        document.write('reg2 test : ' + reg2.test('10') + '<br>');
+        document.write('reg2 test : ' + reg2.test('-10') + '<br>');
+        document.write('reg3 test : ' + reg3.test('-10') + '<br>');
+        document.write('reg4 test : ' + reg4.test('apple') + '<br>');
+        document.write('reg4 test : ' + reg4.test('apple123') + '<br>');
+        document.write('reg4 test : ' + reg4.test('Apple') + '<br>');
+        document.write('reg5 test : ' + reg5.test('Apple123') + '<br>');
+        document.write('reg6 test : ' + reg6.test('홍길동') + '<br>');
+        document.write('reg6 test : ' + reg7.test('홍길동123') + '<br>');
+        document.write('reg7 test : ' + reg7.test('abcd') + '<br>');
+        document.write('reg7 test : ' + reg7.test('abcde') + '<br>');
+        document.write('reg7 test : ' + reg7.test('abcd123') + '<br>');
+        
+
+        // 자주 사용하는 정규표현식
+        const regEmail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+        const regPass  = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+        const regHp    = /^\d{3}-\d{3,4}-\d{4}$/;
+
+        document.write('regEmail : ' + regEmail.test('홍길동@한국.com') + '<br>');
+        document.write('regEmail : ' + regEmail.test('hong1234@korea.com') + '<br>');
+        document.write('regPass : ' + regPass.test('Pass1234!@#') + '<br>');
+        document.write('regHp : ' + regHp.test('010-123-1001') + '<br>');
+
+
+    </script>
+
+
+    <h4>🚨Math</h4>
     <script>
         let rs1 = Math.abs(-5);
         let rs2 = Math.sqrt(9);
@@ -103,8 +197,8 @@
         document.write('n3 : ' + n3 + '<br>');
         document.write('n4 : ' + n4 + '<br>');
     </script>
-    
-    <h4>Date</h4>
+
+    <h4>🚨Date</h4>
     <script>
         const date = new Date();
         document.write('date : ' + date + '<br>');
@@ -121,4 +215,5 @@
 
     </script>
 </body>
+
 </html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.이벤트객체</title>
+    <!--
+        날짜 : 2024/02/08
+        이름 : 이예나
+        내용 : 자바스크립트 이벤트 객체 실습하기
+     -->
+    <style>
+        #container {
+            width: 600px;
+            height: 300px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+
+            // 이벤트 객체 
+            const container = document.getElementById('container');
+            const spans = document.getElementsByTagName('span');
+
+            container.addEventListener('mousemove', function(e){
+
+                console.log(e);
+
+                spans[0].innerText = e.clientX;
+                spans[1].innerText = e.clientY;
+                spans[2].innerText = e.pageX;
+                spans[3].innerText = e.pageY;
+                spans[4].innerText = e.screenX;
+                spans[5].innerText = e.screenY;
+                spans[6].innerText = e.target;
+                spans[7].innerText = e.timeStamp;
+
+            });
+
+            // 기본 이벤트 취소
+            const a = document.getElementsByTagName('a');
+            const form = document.getElementsByTagName('form')[0];
+
+            a[0].onclick = (e) => {
+                // 태그의 기본 이벤트 취소
+                e.preventDefault();
+                alert('네이버 클릭!😎');
+            }
+
+            a[1].onclick = () => {
+
+                alert('구글 클릭!😎');
+
+                // 기본 이벤트 취소
+                return false;
+            }
+
+            form.onsubmit = (e) => {
+                // 폼 전송 취소
+                e.preventDefault();
+
+                alert('전송!!!😝');
+            }
+        }
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <h3>✨3.이벤트 객체</h3>
+
+    <div id="container"></div>
+
+    <h4>주요속성</h4>
+    <p>
+        client X : <span>0</span> <br>
+        client Y : <span>0</span> <br>
+        page X : <span>0</span><br>
+        page Y : <span>0</span><br>
+        screen X : <span>0</span><br>
+        screen Y : <span>0</span><br>
+        target <span>0</span><br>
+        timestamp : <span>0</span><br>
+    </p>
+
+    <h4>기본 이벤트 취소</h4>
+    <a href="https://naver.com">네이버</a>
+    <a href="https://google.com">구글</a>
+
+    <form action="https://google.com">
+        <input type="text"  name="value">
+        <input type="submit"  value="전송">
+    </form>
+
+
+
+</body>
+
+</html>
