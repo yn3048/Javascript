@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.JSON</title>
+        <!-- 
+        날짜 : 2024/02/14
+        이름 : 이예나
+        내용 : 자바스크립트 비동기 처리
+     -->
+</head>
+<body>
+    <h3>🎈3.JSON</h3>
+    <script>
+        //JSON 객체
+        const user = {
+            "uid" : "a101",
+            "name" : "김유신",
+            "age" : 25,
+            "addr" : "김해"
+        };
+
+        document.write('user : ' + user + '<br>');
+        document.write('user : ' + user.uid + '<br>');
+        document.write('name : ' + user.name + '<br>');
+        document.write('age : ' + user.age + '<br>');
+        document.write('addr : ' + user.addr + '<br><br>');
+        
+
+        for(const k in user){
+
+            document.write(k + ' : ' + user[k] + '<br>');
+
+        };
+
+        // JSON 배열
+        const jsonData = {"users":[
+                            {"uid":"a101", "name":"김유신", "age":25, "addr":"김해"},
+                            {"uid":"a102", "name":"김춘추", "age":23, "addr":"경주"},
+                            {"uid":"a103", "name":"장보고", "age":35, "addr":"완도"},
+                            {"uid":"a104", "name":"강감찬", "age":45, "addr":"서울"},
+                            {"uid":"a105", "name":"이순신", "age":55, "addr":"부산"}
+                        ]};
+
+        for(const user of jsonData.users){
+
+            document.write('<p>');
+            document.write('uid : ' + user.uid + '<br>');
+            document.write('name : ' + user.name + '<br>');
+            document.write('age : ' + user.age + '<br>');
+            document.write('addr : ' + user.addr + '<br>');
+            document.write('</p>');
+
+        }
+
+    </script>
+
+
+</body>
+</html>
